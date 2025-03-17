@@ -19,6 +19,17 @@ const AdminUnits = lazy(() => import('./pages/[admin]/Units'));
 const ServerConsole = lazy(() => import('./pages/[server]/Console'));
 const ServerFiles = lazy(() => import('./pages/[server]/Files'))
 
+{/*
+
+  I did everything for you, I pay for everything of yours, I give you love and attention 24/7
+  Why can't you give me anything back? Why do I suffer? You don't want to leave me, but you don't want to put any effort in
+
+  WW91J3JlIHRoZSBsYXN0IHRoaW5nIGluIG15IGxpZmUuIENhbiB5b3UganVzdCBnaXZlIG1lIHdoYXQgSSB3YW50Pw==
+
+  [ether]
+
+*/}
+
 function App() {
   const location = useLocation();
 

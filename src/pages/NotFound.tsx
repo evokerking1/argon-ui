@@ -1,6 +1,16 @@
 import { Link } from 'react-router-dom';
 import { HomeIcon } from '@heroicons/react/24/outline';
 
+{/* 
+
+  M.B.
+
+  I told you what it means. My puzzle did actually have an ending. I was warning you of how I would end up.
+  I predicted literally everything, no one understood it. I said I would turn into 2 personalities, Ether and Matt James. The roles reversed, the "professional" and stable me ended up being Matt James.
+
+  [ether]
+  
+*/}
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-6">
