@@ -24,6 +24,7 @@ interface Node {
 interface ServerDetails {
   id: string;
   internalId: string;
+  validationToken: string;
   name: string;
   node: Node;
 }
@@ -281,7 +282,7 @@ const FileManager: React.FC = () => {
       setLoading(true);
       const response = await fetch(
         `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/list/${currentFullPath}`,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${server?.validationToken}` } }
       );
 
       if (!response.ok) throw new Error('Failed to fetch directory contents');
@@ -302,7 +303,7 @@ const FileManager: React.FC = () => {
     try {
       const response = await fetch(
         `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/contents/${currentFullPath}/${file.name}`,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${server?.validationToken}` } }
       );
 
       if (!response.ok) throw new Error('Failed to fetch file contents');
@@ -336,7 +337,7 @@ const FileManager: React.FC = () => {
             {
               method: 'POST',
               headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${server?.validationToken}`,
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({ file: file.name })
@@ -354,7 +355,7 @@ const FileManager: React.FC = () => {
             `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/delete/${currentFullPath}/${file.name}`,
             {
               method: 'DELETE',
-              headers: { Authorization: `Bearer ${token}` }
+              headers: { Authorization: `Bearer ${server?.validationToken}` }
             }
           );
 
@@ -366,7 +367,7 @@ const FileManager: React.FC = () => {
 
         case 'download': {
           window.open(
-            `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/download/${currentFullPath}/${file.name}?token=${token}`,
+            `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/download/${currentFullPath}/${file.name}?token=${server?.validationToken}`,
             '_blank'
           );
           break;
@@ -392,7 +393,7 @@ const FileManager: React.FC = () => {
         {
           method: 'POST',
           headers: { 
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${server?.validationToken}`,
             'Content-Type': 'application/octet-stream'
           },
           body: ''
@@ -417,7 +418,7 @@ const FileManager: React.FC = () => {
         `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/create-directory/${currentFullPath}/${name}`,
         {
           method: 'POST',
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${server?.validationToken}` }
         }
       );
 
@@ -445,7 +446,7 @@ const handleMassDelete = useCallback(async () => {
           `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/delete/${currentFullPath}/${fileName}`,
           {
             method: 'DELETE',
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${server?.validationToken}` }
           }
         );
 
@@ -486,7 +487,7 @@ const handleUpload = useCallback(async (files: FileList | File[]) => {
         `http://${server.node.fqdn}:${server.node.port}/api/v1/filesystem/${server.internalId}/upload/${currentFullPath}`,
         {
           method: 'POST',
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${server?.validationToken}` },
           body: formData
         }
       );
@@ -528,7 +529,7 @@ const handleCompress = useCallback(async (name: string) => {
       {
         method: 'POST',
         headers: { 
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${server?.validationToken}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -563,7 +564,7 @@ const handleSaveFile = useCallback(async (file: FileEntry, content: string): Pro
       {
         method: 'POST',
         headers: { 
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${server?.validationToken}`,
           'Content-Type': 'application/octet-stream'
         },
         body: content

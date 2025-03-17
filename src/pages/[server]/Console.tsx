@@ -36,6 +36,7 @@ interface ServerDetails {
   cpuPercent: number;
   state: string;
   createdAt: string;
+  validationToken: string;
   node: Node;
   status: ServerStatus;
 }
@@ -148,7 +149,7 @@ const ServerConsolePage = () => {
       wsRef.current.close();
     }
   
-    const wsUrl = `ws://${serverData.node.fqdn}:${serverData.node.port}?server=${serverData.internalId}&token=${token}`;
+    const wsUrl = `ws://${serverData.node.fqdn}:${serverData.node.port}?server=${serverData.internalId}&token=${serverData.validationToken}`;
     
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;

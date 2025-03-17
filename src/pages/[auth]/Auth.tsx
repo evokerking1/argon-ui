@@ -153,7 +153,7 @@ export const AuthPage: React.FC<{ mode: 'login' | 'register' }> = ({ mode }) => 
       <div className="w-full max-w-sm">
         <div className="mb-4">
           <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-200">
-            {mode === 'login' ? 'you fat nonce' : 'Create your account'}
+            {mode === 'login' ? 'Welcome to Argon!' : 'Create your account'}
           </h2>
         </div>
 
