@@ -14,6 +14,7 @@ const AdminPage = lazy(() => import('./pages/AdminPage'));
 const AdminNodes = lazy(() => import('./pages/[admin]/Nodes'));
 const AdminServers = lazy(() => import('./pages/[admin]/Servers'));
 const AdminUnits = lazy(() => import('./pages/[admin]/Units'));
+const AdminUsers = lazy(() => import('./pages/[admin]/Users'));
 
 // Servers
 const ServerConsole = lazy(() => import('./pages/[server]/Console'));
@@ -113,7 +114,9 @@ function App() {
                   <Route path="/admin/nodes" element={<AdminNodes />} />
                   <Route path="/admin/servers" element={<AdminServers />} />
                   <Route path="/admin/units" element={<AdminUnits />} />
+                  <Route path="/admin/users" element={<AdminUsers />} />
 
+                  {/* Server routes */}
                   <Route
                     path="/servers/:id/console"
                     element={

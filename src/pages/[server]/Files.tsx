@@ -760,7 +760,7 @@ return (
               placeholder="Search..."
               className="w-32 px-3 py-1 pl-9 text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-md text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
             />
-            <Search className="w-4 h-4 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
+            <Search className="w-4 h-4 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 transform -trangray-y-1/2" />
           </div>
 
           {/* New File */}

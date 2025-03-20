@@ -203,7 +203,7 @@ export const AuthPage: React.FC<{ mode: 'login' | 'register' }> = ({ mode }) => 
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 
+                  className="absolute right-2 top-1/2 transform -trangray-y-1/2 text-gray-400 hover:text-gray-600 
                            dark:text-gray-500 dark:hover:text-gray-300"
                 >
                   {showPassword ? (
